@@ -5,15 +5,15 @@ import { Plus, Trash2 } from "lucide-react";
 import { FixedBill, MoneyState } from "@/lib/types";
 import { formatINR } from "@/lib/money";
 
-export function MonthlyPlan({ state, onSave }: { state: MoneyState; onSave: (income: number, savings: number, bills: FixedBill[]) => void }) {
+export function MonthlyPlan({ state, onSave }: { state: MoneyState; onSave: (income: number, savings: number, bills: FixedBill[]) => Promise<void> }) {
   const [income, setIncome] = useState(String(state.expectedIncome));
   const [savings, setSavings] = useState(String(state.savingsTarget));
   const [bills, setBills] = useState<FixedBill[]>(state.bills);
   const billTotal = bills.reduce((sum, bill) => sum + Number(bill.amount), 0);
 
-  const save = (event: FormEvent) => {
+  const save = async (event: FormEvent) => {
     event.preventDefault();
-    onSave(Number(income), Number(savings), bills.filter((bill) => bill.name.trim() && Number(bill.amount) > 0));
+    await onSave(Number(income), Number(savings), bills.filter((bill) => bill.name.trim() && Number(bill.amount) > 0));
   };
 
   return (

@@ -8,7 +8,7 @@ const expenseCategories: Category[] = ["Food", "Transport", "Shopping", "Home", 
 
 interface TransactionFormProps {
   onClose: () => void;
-  onSubmit: (transaction: Omit<Transaction, "id">) => void;
+  onSubmit: (transaction: Omit<Transaction, "id">) => Promise<void>;
 }
 
 export function TransactionForm({ onClose, onSubmit }: TransactionFormProps) {
@@ -30,11 +30,11 @@ export function TransactionForm({ onClose, onSubmit }: TransactionFormProps) {
     };
   }, [onClose]);
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
     const parsedAmount = Number(amount);
     if (!Number.isFinite(parsedAmount) || parsedAmount <= 0 || !note.trim()) return;
-    onSubmit({ type, amount: parsedAmount, category: type === "income" ? "Other" : category, note: note.trim(), date });
+    await onSubmit({ type, amount: parsedAmount, category: type === "income" ? "Other" : category, note: note.trim(), date });
     onClose();
   };
 
