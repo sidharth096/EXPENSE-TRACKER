@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 
 export function AuthForm() {
@@ -35,7 +36,7 @@ export function AuthForm() {
   return (
     <main className="auth-page">
       <section className="auth-card">
-        <span className="eyebrow">Khata</span>
+        <span className="eyebrow auth-brand"><Image src="/flow-brand.png" width={36} height={36} alt="" />Flow</span>
         <h1>{mode === "sign-in" ? "Welcome back." : "Start tracking clearly."}</h1>
         <p>{mode === "sign-in" ? "Sign in to see your private money tracker." : "Create an account. We will ask you to confirm your email first."}</p>
         <form onSubmit={submit} className="auth-form">

@@ -1,4 +1,5 @@
-import { BarChart3, House, List, NotebookTabs, WalletCards } from "lucide-react";
+import { BarChart3, House, List, NotebookTabs } from "lucide-react";
+import Image from "next/image";
 import { View } from "@/lib/types";
 
 const items: { id: View; label: string; icon: typeof House }[] = [
@@ -16,8 +17,8 @@ interface NavigationProps {
 export function Brand() {
   return (
     <div className="brand">
-      <span className="brand-mark"><WalletCards size={22} /></span>
-      <span>Khata</span>
+      <Image className="brand-mark" src="/flow-brand.png" width={36} height={36} alt="" />
+      <span>Flow</span>
     </div>
   );
 }

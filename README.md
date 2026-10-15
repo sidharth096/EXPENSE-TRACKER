@@ -1,6 +1,6 @@
-# Khata Money Tracker
+# Flow Money Tracker
 
-Khata is a responsive personal money tracker focused on one clear number: how much remains safe to spend after fixed bills, savings, and recorded expenses.
+Flow is a responsive personal money tracker focused on one clear number: how much remains safe to spend after fixed bills, savings, and recorded expenses.
 
 ## Run locally
 
@@ -30,3 +30,7 @@ npm run build
 The app uses email/password accounts. New users must confirm their email before signing in. Data is stored in PostgreSQL and Row Level Security limits every row to its authenticated owner.
 
 Amounts in the SQL schema use integer paise. Row Level Security policies limit every table to the authenticated owner.
+
+## Install on a phone
+
+After deploying over HTTPS, open the site in Chrome on Android and choose **Install app** from the browser menu. On iPhone, open it in Safari, tap **Share**, then **Add to Home Screen**. Flow needs an internet connection to sign in and sync data with Supabase.

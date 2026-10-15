@@ -5,8 +5,14 @@ import "./globals.css";
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Khata | Know where your money went",
+  title: "Flow | Know where your money went",
   description: "A clear, personal monthly money tracker.",
+  applicationName: "Flow",
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "Flow" },
+};
+
+export const viewport = {
+  themeColor: "#003f35",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
